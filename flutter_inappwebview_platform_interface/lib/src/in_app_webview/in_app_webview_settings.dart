@@ -2632,6 +2632,17 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
   )
   String? iframeAriaHidden;
 
+  /// Enable Payment Request API in order to use Google Pay inside the WebView.
+  @SupportedPlatforms(platforms: [
+    AndroidPlatform(
+        apiName: "WebSettingsCompat.setPaymentRequestEnabled",
+        apiUrl:
+            "https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setPaymentRequestEnabled(android.webkit.WebSettings,boolean)",
+        note:
+            "available on Android only if [WebViewFeature.PAYMENT_REQUEST] feature is supported.")
+  ])
+  bool paymentRequestEnabled;
+
   ///Sets whether console messages are written to stdout.
   ///When enabled, console messages from the web page will be written to the standard output.
   ///This is useful for debugging purposes.
@@ -3445,6 +3456,7 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
     this.iframeCsp,
     this.iframeRole,
     this.iframeAriaHidden,
+    this.paymentRequestEnabled = false,
     this.enableWriteConsoleMessagesToStdout = false,
     this.enableSmoothScrolling = true,
     this.enableCaretBrowsing = false,
